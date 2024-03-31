@@ -1,5 +1,9 @@
-
-if (a >= b)
+// Main() function: where the execution of
+// program begins
+int main()
 {
-return 0;
-} //check if a is greater than or equal to b
+    // Prints hello world
+    cout << "Hello World";
+ 
+    return 0;
+}

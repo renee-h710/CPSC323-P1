@@ -1,10 +1,10 @@
 import re
 
 def lexical_analyzer(filename):
-    # Regular expressions to identify lexemes
-    keywords = {'if', 'return'}
-    operators = {'>', '=', '+', '-', '*', '/', '<'}
-    separators = {'(', ')', '{', '}', ';'}
+    # Regular expressions to identify lexemes using C++ language
+    keywords = {'if', 'return', 'else', 'switch', 'while', 'do', 'for', 'break', 'continue', 'goto', 'const', 'char', 'int', 'float', 'class', 'cout', 'cin'}
+    operators = {'>', '=', '+', '-', '*', '/', '<', '%', '!', '&', '~', '^'}
+    separators = {'(', ')', '{', '}', ';', '[', ']', ':'}
     whitespace = {' '}
     
     # Open the input file
@@ -25,7 +25,7 @@ def lexical_analyzer(filename):
         elif word in operators:
             print("'" + word + "'" + " = operator")
         elif word in separators:
-            print("'" + word + "'" + " = seperator")
+            print("'" + word + "'" + " = separator")
         elif word not in whitespace:
             if word.isalpha():
                 print("'" + word + "'" + " = identifier")
