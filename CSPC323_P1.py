@@ -1,20 +1,24 @@
-def lexical_analyzer(filename):
+
+#Lexical Analyzer opens the file and calls the tokenize function. It will then print the set of lexems and their tokens.
+def lexical_analysis(textfile):
     try:
-        with open(filename, 'r') as file:
+        with open(textfile, 'r') as file:
             input_text = file.read()
             tokens = tokenize(input_text)
             for token, token_type in tokens:
                 print(f'"{token}" = {token_type}')
     except FileNotFoundError:
-        print(f"Error: The file '{filename}' was not found.")
+        print(f"Error: The file '{textfile}' was not found.")
 
+#The Tokenize function inputs the text, removes comments and whitespace, and sorts the rest into tokens lists.
 def tokenize(input_text):
     tokens = []  # holds the tokens
-    keywords = {'if', 'return'}
-    operators = {'>', '=', '+', '-', '*', '/'}
-    separators = {'(', ')', '{', '}', ';'}
+    keywords = {'if', 'return'} #keywords only include what is in the input text today, but can be expanded for any number of keywords
+    operators = {'>', '=', '+', '-', '*', '/','%','&'}
+    separators = {'(', ')', '{', '}', ';','[',']'}
     i = 0
-    while i < len(input_text):
+    #repeats for every character in the text
+    while i < len(input_text): 
         current_char = input_text[i]
         # Skip whitespace
         if current_char.isspace():
@@ -45,7 +49,7 @@ def tokenize(input_text):
             else:
                 tokens.append((identifier, 'identifier'))
             continue
-        # Integer
+        # Integers 
         if current_char.isdigit():
             num = current_char
             i += 1
@@ -69,5 +73,5 @@ def tokenize(input_text):
         i += 1
     return tokens
 
-filename = "input.txt"  # replace with the actual file name
-lexical_analyzer(filename)
+textfile = "input.txt"  
+lexical_analysis(textfile)
